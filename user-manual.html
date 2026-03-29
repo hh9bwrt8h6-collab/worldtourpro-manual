@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>World Tour Pro — User Manual</title>
+  <style>
+    /* ─── FONTS & RESET ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { max-width: 100%; overflow-x: hidden; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      color: #1a1a2e;
+      background: #f7f8fc;
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+    p, li, td, th, h1, h2, h3, h4, span {
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+
+    /* ─── LAYOUT ─── */
+    .page-wrap {
+      max-width: 860px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 20px 16px 60px;
+    }
+
+    /* ─── HEADER ─── */
+    .manual-header {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+      color: #fff;
+      padding: 28px 20px 24px;
+      border-radius: 16px;
+      margin-bottom: 24px;
+    }
+    .manual-header h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+    .manual-header .subtitle {
+      font-size: 1rem;
+      opacity: 0.9;
+      color: #c8d6e8;
+    }
+    .manual-header .version {
+      display: inline-block;
+      margin-top: 16px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 20px;
+      padding: 3px 14px;
+      font-size: 0.8rem;
+      opacity: 0.85;
+    }
+    .header-logo {
+      height: 64px;
+      width: auto;
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    /* ─── PRINT / PDF BUTTON ─── */
+    .pdf-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #4a9eff;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 22px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 36px;
+      transition: background 0.15s;
+    }
+    .pdf-btn:hover { background: #2d7dd2; }
+    .pdf-btn svg { width: 18px; height: 18px; }
+
+    /* ─── TABLE OF CONTENTS ─── */
+    .toc {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 20px 20px;
+      margin-bottom: 32px;
+    }
+    .toc h2 {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #94a3b8;
+      margin-bottom: 16px;
+    }
+    .toc ol {
+      padding-left: 20px;
+      columns: 1;
+    }
+    .toc li {
+      margin-bottom: 6px;
+      break-inside: avoid;
+    }
+    .toc a {
+      color: #4a9eff;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    .toc a:hover { text-decoration: underline; }
+
+    /* ─── SECTIONS ─── */
+    .section {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 24px 20px;
+      margin-bottom: 24px;
+    }
+    .section-icon {
+      display: inline-block;
+      font-size: 1.4rem;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+    h2.section-title {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid #f1f5f9;
+    }
+    h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #1a1a2e;
+      margin: 28px 0 10px;
+    }
+    h3:first-of-type { margin-top: 16px; }
+    h4 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #475569;
+      margin: 20px 0 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    p { margin-bottom: 12px; color: #374151; }
+    p:last-child { margin-bottom: 0; }
+
+    ul, ol {
+      padding-left: 20px;
+      margin-bottom: 14px;
+      color: #374151;
+    }
+    li { margin-bottom: 5px; }
+
+    /* ─── ROLE BADGES ─── */
+    .badge {
+      display: inline-block;
+      border-radius: 4px;
+      padding: 2px 9px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .badge-admin    { background: #fee2e2; color: #b91c1c; }
+    .badge-tm       { background: #ccfbf1; color: #0f766e; }
+    .badge-crew     { background: #f1f5f9; color: #475569; }
+    .badge-artist   { background: #ede9fe; color: #6d28d9; }
+
+    /* ─── INFO / TIP BOXES ─── */
+    .tip, .note, .warning {
+      border-left: 4px solid;
+      border-radius: 0 8px 8px 0;
+      padding: 12px 16px;
+      margin: 16px 0;
+      font-size: 0.9rem;
+    }
+    .tip     { border-color: #4a9eff; background: #eff6ff; color: #1e40af; }
+    .note    { border-color: #f59e0b; background: #fffbeb; color: #92400e; }
+    .warning { border-color: #ef4444; background: #fef2f2; color: #991b1b; }
+
+    /* ─── PERMISSIONS TABLE ─── */
+    .perm-table-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 18px 0;
+    }
+    .perm-table {
+      width: 100%;
+      min-width: 480px;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+    }
+    .perm-table th {
+      text-align: left;
+      padding: 8px 12px;
+      background: #f8fafc;
+      color: #475569;
+      font-weight: 600;
+      border-bottom: 2px solid #e2e8f0;
+    }
+    .perm-table td {
+      padding: 8px 12px;
+      border-bottom: 1px solid #f1f5f9;
+      color: #374151;
+    }
+    .perm-table tr:last-child td { border-bottom: none; }
+    .perm-table td:not(:first-child) { text-align: center; }
+    .yes { color: #16a34a; font-weight: 700; }
+    .no  { color: #d1d5db; }
+
+    /* ─── FIELDS LIST ─── */
+    .field-list {
+      list-style: none;
+      padding: 0;
+    }
+    .field-list li {
+      padding: 7px 0;
+      border-bottom: 1px solid #f1f5f9;
+      display: flex;
+      gap: 8px;
+      align-items: baseline;
+      flex-wrap: wrap;
+    }
+    .field-list li:last-child { border-bottom: none; }
+    .field-name {
+      font-weight: 600;
+      color: #1a1a2e;
+      min-width: 120px;
+      font-size: 0.875rem;
+    }
+    .field-desc { color: #374151; font-size: 0.875rem; }
+
+    /* ─── STEP LIST ─── */
+    .steps { list-style: none; padding: 0; counter-reset: steps; }
+    .steps li {
+      counter-increment: steps;
+      position: relative;
+      padding-left: 40px;
+      margin-bottom: 14px;
+      min-width: 0;
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+    .steps li::before {
+      content: counter(steps);
+      background: #4a9eff;
+      color: #fff;
+      border-radius: 50%;
+      width: 26px;
+      height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      position: absolute;
+      left: 0;
+      top: 3px;
+    }
+    .steps li ul,
+    .steps li ol {
+      margin-top: 8px;
+      padding-left: 16px;
+    }
+
+    /* ─── DIVIDER ─── */
+    hr { border: none; border-top: 2px solid #f1f5f9; margin: 28px 0; }
+
+    /* ─── SECTION NAVIGATION ─── */
+    .section-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 2px solid #f1f5f9;
+      gap: 12px;
+    }
+    .section-nav a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 18px;
+      border-radius: 8px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      color: #1a1a2e;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.15s, border-color 0.15s;
+      white-space: nowrap;
+    }
+    .section-nav a:hover { background: #e8f0fe; border-color: #4a9eff; color: #1e40af; }
+    .section-nav .nav-prev::before { content: '←'; font-size: 1rem; }
+    .section-nav .nav-next::after  { content: '→'; font-size: 1rem; }
+    .section-nav .nav-spacer { flex: 1; }
+
+    /* ─── PRINT / PDF STYLES ─── */
+    @media print {
+      body { background: #fff; font-size: 13px; }
+      .page-wrap { max-width: 100%; padding: 0; }
+      .pdf-btn { display: none !important; }
+      .section-nav { display: none !important; }
+      .manual-header {
+        background: #1a1a2e !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        border-radius: 0;
+        margin-bottom: 24px;
+      }
+      .section {
+        border: 1px solid #ccc;
+        border-radius: 0;
+        page-break-inside: avoid;
+        margin-bottom: 20px;
+        padding: 24px 28px;
+      }
+      .toc { border-radius: 0; page-break-after: always; }
+      h2.section-title { page-break-after: avoid; }
+      h3 { page-break-after: avoid; }
+      .tip, .note, .warning { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .perm-table th { background: #f8fafc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      a { color: inherit; text-decoration: none; }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- ═══════════════════════════════════════════ HEADER ═══ -->
+  <header class="manual-header">
+    <img src="../assets/images/logo.png" alt="World Tour Pro" class="header-logo" />
+    <h1>World Tour Pro</h1>
+    <p class="subtitle">User Manual — everything you need to manage your tour</p>
+    <span class="version">Version 1.4.2 &nbsp;·&nbsp; March 2026</span>
+  </header>
+
+  <button class="pdf-btn" onclick="if(window.ReactNativeWebView){window.ReactNativeWebView.postMessage('print')}else{window.print()}">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+      <rect x="6" y="14" width="12" height="8"/>
+    </svg>
+    Save as PDF
+  </button>
+
+  <!-- ═══════════════════════════════════════════ TOC ═══ -->
+  <nav class="toc">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#roles">User Roles &amp; Permissions</a></li>
+      <li><a href="#getting-started">Getting Started</a></li>
+      <li><a href="#dates">Tour Dates</a></li>
+      <li><a href="#show">Show Screen</a></li>
+      <li><a href="#hotel">Hotel</a></li>
+      <li><a href="#transport">Transport</a></li>
+      <li><a href="#backline">Backline</a></li>
+      <li><a href="#guest-list">Guest List</a></li>
+      <li><a href="#calendar">Calendar</a></li>
+      <li><a href="#songs">Song List</a></li>
+      <li><a href="#crew">Crew</a></li>
+      <li><a href="#contacts">Contacts</a></li>
+      <li><a href="#notifications">Notifications</a></li>
+      <li><a href="#organisations">Organisations</a></li>
+      <li><a href="#admin">Admin — User Management</a></li>
+      <li><a href="#settings">Settings</a></li>
+      <li><a href="#tasks">Tasks</a></li>
+      <li><a href="#finance">Finance</a></li>
+    </ol>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════ 1. ROLES ═══ -->
+  <section class="section" id="roles">
+    <h2 class="section-title"><span class="section-icon">🔑</span>User Roles &amp; Permissions</h2>
+    <p>Every account is assigned one of four roles. Your role determines what you can see and edit throughout the app.</p>
+
+    <div class="perm-table-wrap">
+    <table class="perm-table">
+      <thead>
+        <tr>
+          <th>Role</th>
+          <th>Add / Edit</th>
+          <th>Delete</th>
+          <th>Manage Users</th>
+          <th>See Private Info</th>
+          <th>Send Notifications</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="badge badge-admin">Admin</span></td>
+          <td class="yes">✓</td>
+          <td class="yes">✓</td>
+          <td class="yes">✓</td>
+          <td class="yes">✓</td>
+          <td class="yes">✓</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-tm">Tour Manager</span></td>
+          <td class="yes">✓</td>
+          <td class="no">—</td>
+          <td class="no">—</td>
+          <td class="yes">✓</td>
+          <td class="yes">✓</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-crew">Crew</span></td>
+          <td class="no">—</td>
+          <td class="no">—</td>
+          <td class="no">—</td>
+          <td class="no">—</td>
+          <td class="no">—</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-artist">Artist</span></td>
+          <td class="no">—</td>
+          <td class="no">—</td>
+          <td class="no">—</td>
+          <td class="no">—</td>
+          <td class="no">—</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="note">
+      <strong>Private info</strong> includes crew frequent flyer numbers, APRA/union numbers, seat preferences, and home address. Crew and Artist roles cannot see these fields on crew cards.
+    </div>
+
+    <nav class="section-nav">
+      <div class="nav-spacer"></div>
+      <a href="#getting-started" class="nav-next">Getting Started</a>
+    </nav>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ 2. GETTING STARTED ═══ -->
+  <section class="section" id="getting-started">
+    <h2 class="section-title"><span class="section-icon">🚀</span>Getting Started</h2>
+
+    <h3>Creating an Account</h3>
+    <ol class="steps">
+      <li>Open the app and tap <strong>Sign Up</strong>.</li>
+      <li>Enter your first name, last name, email address, and a password, then tap <strong>Next</strong>.</li>
+      <li>You will be asked what you want to do — <strong>Create an Organisation</strong> or <strong>Join an Organisation</strong>. Choose the path that applies to you (see below).</li>
+    </ol>
+    <div class="tip">Already have an account? Tap <strong>Sign In</strong> instead and enter your email and password. If you've previously enabled Face ID, the Face ID button will appear on the sign-in screen for one-tap access.</div>
+
+    <h3>Path A: Creating an Organisation <span class="badge badge-admin">Admin</span></h3>
+    <p>Choose this if you are the admin — the person setting up the app for a band or company for the first time.</p>
+    <ol class="steps">
+      <li>Tap <strong>Create an Organisation</strong>. A subscription is required — the paywall will appear. Subscribe to unlock admin access.</li>
+      <li>Once subscribed, enter a name for your organisation (e.g. <em>The Angels</em> or <em>Rock The Boat Management</em>) and tap <strong>Create Organisation</strong>.</li>
+      <li>You are signed in and taken straight to the app. Your organisation is ready — you can now add tours, dates, and invite crew.</li>
+    </ol>
+    <div class="tip">To invite crew and artists, go to the <strong>Admin</strong> tab &rarr; <strong>Invite Codes</strong>. Generate an invite code and share it with each person — they sign up using <strong>Join an Organisation</strong> and enter the code.</div>
+
+    <h3>Path B: Joining an Organisation</h3>
+    <p>Choose this if you have been invited by an admin — you are a crew member, artist, or tour manager joining an existing organisation.</p>
+    <ol class="steps">
+      <li>Tap <strong>Join an Organisation</strong>.</li>
+      <li>Enter the invite code your admin has shared with you (e.g. <em>ABC123</em>) and tap <strong>Join</strong>.</li>
+      <li>You are signed in and added to the organisation automatically. Your role (Tour Manager, Crew, or Artist) is assigned by the admin.</li>
+    </ol>
+    <div class="note">If you don't have an invite code, ask your admin to generate one from the Admin tab &rarr; Invite Codes.</div>
+
+    <h3>Selecting an Organisation</h3>
+    <p>All tour data is scoped to an organisation. If you belong to more than one, tap the <strong>Organisations</strong> tab (or go to Settings &rarr; Organisations) to switch between them. The active organisation is shown with a blue border and a checkmark. All dates, songs, crew, and contacts update instantly when you switch.</p>
+    <div class="tip">If you manage more than one artist, create a separate organisation for each. Data is completely isolated between organisations — switching never mixes content.</div>
+
+    <h3>Face ID / Touch ID</h3>
+    <p>After signing in with your email and password for the first time, the app will offer to enable <strong>Face ID</strong> (or Touch ID on older devices). Tap <strong>Enable</strong> to save your credentials securely. On future sign-ins, a <strong>Sign In with Face ID</strong> button appears on the login screen — tap it to authenticate with a glance instead of typing your password.</p>
+    <div class="note">For security, the app will ask you to re-authenticate (via Face ID or password) if it has been closed for more than 48 hours.</div>
+
+    <h3>Navigation</h3>
+    <p>The app uses a bottom tab bar with five main areas:</p>
+    <ul>
+      <li><strong>Dates</strong> (mic icon) — your tour dates list, the main hub</li>
+      <li><strong>Calendar</strong> — monthly calendar view of all dates</li>
+      <li><strong>Songs</strong> — the master song library</li>
+      <li><strong>Crew</strong> — band and crew contacts</li>
+      <li><strong>Notifications</strong> (bell icon) — inbox and message sending</li>
+    </ul>
+    <p>Hotel, Backline, Guest List, Transport, Contacts, Admin, and Organisations are accessed from within the relevant screen or via the navigation flow.</p>
+    <p>Tap the <strong>⋮ menu</strong> in the top-right header of any screen to access the following options:</p>
+    <ul>
+      <li><strong>✅ Tasks</strong> — open the task list (Admin and Tour Manager only)</li>
+      <li><strong>📁 Files</strong> — shared tour file library</li>
+      <li><strong>👤 Contacts</strong> — venue and tour contacts</li>
+      <li><strong>⚙️ Settings</strong> — appearance, time format, organisations, and admin options (see <a href="#settings">Settings</a> below)</li>
+      <li><strong>📖 User Manual</strong> — opens this guide in-app</li>
+      <li><strong>🚪 Sign Out</strong></li>
+    </ul>
+    <p>The header also includes a <strong>↻ refresh button</strong> (spinning arrow icon) next to the ⋮ menu. Tap it at any time to reload tour data, the user list, and notifications from the cloud. All screens update immediately.</p>
+
+    <h3>Offline &amp; Sync</h3>
+    <p>World Tour Pro works offline. All data is cached on your device so you can view and edit tour information without an internet connection. When connectivity is restored, changes sync to the cloud automatically.</p>
+    <p>A yellow <strong>⚠ Sync Pending</strong> banner appears in the app header when local changes haven't yet reached the cloud. Tap <strong>Sync Now</strong> in the banner to force an immediate upload.</p>
+
+    <h3>iOS Accessibility — Larger Text</h3>
+    <p>The app header (app name, organisation name, tour selector, and ⋮ menu) is designed at a fixed size and does <strong>not</strong> scale with the iOS <em>Larger Text</em> accessibility setting (Settings → Accessibility → Display &amp; Text Size → Larger Text). This prevents the header from overflowing on smaller screens. All other text throughout the app — show details, schedules, contacts, crew cards, etc. — does respect the Larger Text setting.</p>
+
+    <nav class="section-nav">
+      <a href="#roles" class="nav-prev">User Roles</a>
+      <div class="nav-spacer"></div>
+      <a href="#dates" class="nav-next">Tour Dates</a>
+    </nav>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ 3. TOUR DATES ═══ -->
+  <section class="section" id="dates">
+    <h2 class="section-title"><span class="section-icon">🎤</span>Tour Dates</h2>
+    <p>The <strong>Dates</strong> tab is your home screen. It shows all tours and dates for the active year, organised as collapsible group cards.</p>
+
+    <h3>Tour Year Selector</h3>
+    <p>The app organises all tours and dates by year. A <strong>📅 year button</strong> (e.g. <em>📅 2026 ▼</em>) appears in the header when you're on the Dates or Calendar tab. Tap it to open the Year panel, which lists all available tour years. Tap any year to switch to it — the Dates screen will reload showing only tours for that year.</p>
+    <p>To add a new year, tap <strong>+ Add Tour Year</strong> at the bottom of the list and enter a 4-digit year.</p>
+    <div class="tip">Your selected year is remembered between sessions. If the dates list looks empty, check that the correct year is selected in the header.</div>
+
+    <h3>Creating a Tour <span class="badge badge-admin">Admin</span></h3>
+    <p>Tours (also called groups) are the containers for your show dates within a year. To create one, tap the <strong>+</strong> button next to the <strong>TOURS/DATES</strong> heading on the Dates screen. Enter a name (e.g. <em>World Tour 2026</em>) and tap <strong>Add</strong>. The new tour card appears immediately under the active year.</p>
+    <div class="tip">You can have as many tours as you need within a year — one per leg, one per artist, etc. All dates, hotels, transport, and files are stored per-tour.</div>
+
+    <h3>Tour Group Cards</h3>
+    <p>Each tour is displayed as a collapsible group card with two rows:</p>
+    <ul>
+      <li><strong>Row 1:</strong> coloured dot &nbsp;·&nbsp; tour name</li>
+      <li><strong>Row 2:</strong> date count &nbsp;·&nbsp; ✏ edit &nbsp;·&nbsp; + Date &nbsp;·&nbsp; share PDF &nbsp;·&nbsp; 🗑 delete &nbsp;·&nbsp; expand ∨ chevron</li>
+    </ul>
+    <p>Tap the chevron to expand or collapse the dates within that tour.</p>
+    <div class="tip">The <strong>Ungrouped</strong> card (if present) shows dates that have been moved out of their original tour. It has no management controls — only the expand chevron and a date count. See <a href="#ungrouped">Ungrouped Dates</a> below.</div>
+
+    <h3>Reordering Tours <span class="badge badge-admin">Admin</span></h3>
+    <p>Tap <strong>Edit</strong> next to the TOURS/DATES heading to enter reorder mode. A <strong>≡ drag handle</strong> appears on the left of each tour card. Long-press the handle and drag the card to its new position. Tap <strong>Done</strong> to save the new order.</p>
+
+    <h3>Editing a Tour Name &amp; Colour <span class="badge badge-admin">Admin</span></h3>
+    <p>Tap the <strong>✏ pencil icon</strong> on a tour card to open the Edit Tour modal. Update the tour name, choose one of the 8 colour swatches, then tap <strong>Save</strong>. The tour's coloured dot updates immediately throughout the app.</p>
+
+    <h3>Deleting a Tour <span class="badge badge-admin">Admin</span></h3>
+    <p>Tap the <strong>trash icon</strong> on a tour card. You will be asked to confirm before anything is removed.</p>
+    <div class="tip"><strong>A tour can only be deleted when it has no dates.</strong> If dates are still present, a blocking alert will appear: <em>"[Tour name]" still has X dates. Move or delete all dates before removing this tour.</em> Use the ⋮ menu on each date to move them to another group first.</div>
+
+    <h3 id="ungrouped">Ungrouped Dates <span class="badge badge-admin">Admin</span></h3>
+    <p><strong>Ungrouped</strong> is a special holding area for dates that have been moved out of their original tour but not yet assigned to another. It appears as a grey card below all named tours, and only when it contains at least one date.</p>
+    <ul>
+      <li>To move a date <strong>into</strong> Ungrouped: tap the <strong>⋮</strong> menu on the date → <strong>Move to Group</strong> → <strong>Ungrouped</strong>.</li>
+      <li>To move a date <strong>out of</strong> Ungrouped: tap the <strong>⋮</strong> menu on the date → <strong>Move to Group</strong> → choose a named tour.</li>
+    </ul>
+    <p>The Ungrouped card has no add, edit, share, or delete controls — it is a temporary home only. Once all its dates are moved away, the card disappears automatically.</p>
+
+    <h3>Filter Bar</h3>
+    <p>A row of filter controls sits above the tour cards:</p>
+    <ul>
+      <li><strong>All / Show / Travel / Off</strong> — filter dates by day type</li>
+      <li><strong>Today</strong> (green pill) — opens the Show Screen for today's date. If today has no booked date, an alert displays <em>"Nothing booked. Enjoy your day off! 🌞"</em></li>
+      <li><strong>Sort ↑↓</strong> — toggle ascending or descending date order</li>
+      <li><strong>Hide past / Show all</strong> — show or hide past dates across all tours</li>
+      <li><strong>Timeline / Hide timeline</strong> (blue pill) — toggle the flat chronological Timeline view (see below)</li>
+    </ul>
+    <div class="tip">If the list appears empty, check whether past dates are hidden. The filter bar shows how many are concealed — tap <strong>Show all</strong> to reveal them.</div>
+
+    <h3>Timeline View</h3>
+    <p>Tap <strong>Timeline</strong> in the filter bar to reveal a flat chronological list of <em>all</em> dates below the group cards, regardless of which tour they belong to. Each row shows:</p>
+    <ul>
+      <li>A coloured left border matching the tour's group colour</li>
+      <li>The tour name as a small label</li>
+      <li>The date, venue, and city</li>
+    </ul>
+    <p>Month headers separate different months as you scroll. All active filters (day type, hide past, search) apply to the timeline too. Tap <strong>Hide timeline</strong> to collapse it.</p>
+
+    <h3>Reading the Dates List</h3>
+    <p>Within an expanded tour card, dates are listed chronologically. Each row shows a calendar block (day, date, month) on the left, the venue name as main text, and the city below it. A small <strong>eye icon</strong> indicates the date has restricted visibility. Tap any date to open the full <a href="#show">Show Screen</a>.</p>
+
+    <h3>Adding a Date <span class="badge badge-admin">Admin</span></h3>
+    <ol class="steps">
+      <li>Tap the <strong>+ Date</strong> button on the tour card (Row 2) for the tour you want to add the date to.</li>
+      <li>Enter the date (dd/mm/yyyy), city, and venue. Typing in the venue field shows Google Places suggestions — select one to auto-fill the address, city, postcode, country, and timezone.</li>
+      <li>Tap <strong>Add Date</strong> to save.</li>
+    </ol>
+
+    <h3>Editing or Deleting a Date <span class="badge badge-admin">Admin</span></h3>
+    <p><strong>Long-press</strong> a date row to reveal inline <strong>edit (pencil)</strong> and <strong>delete (trash)</strong> buttons for that row. Tap the pencil to open the Edit Date form (same fields as Add Date). Tap the trash to delete the date with a confirmation prompt.</p>
+
+    <h3>Sharing a Tour as PDF <span class="badge badge-admin">Admin</span> <span class="badge badge-tm">Tour Manager</span></h3>
+    <p>Tap the <strong>share icon</strong> on a tour card (Row 2) to generate a PDF of all dates in that tour. A <strong>full-screen preview</strong> opens — scroll through the document before sharing. Tap <strong>Share</strong> at the bottom to send via AirDrop, email, or any other share option.</p>
+    <p>The PDF includes:</p>
+    <ul>
+      <li>Organisation name as the document header</li>
+      <li>All dates formatted as <em>Fri 14 Mar 2026</em> with venue and city</li>
+      <li>The shared date and <strong>World Tour Pro</strong> as a footer</li>
+    </ul>
+    <p>The document is formatted to A4 size with standard print margins.</p>
+
+    <nav class="section-nav">
+      <a href="#getting-started" class="nav-prev">Getting Started</a>
+      <div class="nav-spacer"></div>
+      <a href="#show" class="nav-next">Show Screen</a>
+    </nav>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ 4. SHOW ═══ -->
+  <section class="section" id="show">
+    <h2 class="section-title"><span class="section-icon">📋</span>Show Screen</h2>
+    <p>The Show Screen is the central hub for a single show day. Tap any date from the Dates tab to open it.</p>
+
+    <h3>Header — Venue, Date &amp; City</h3>
+    <p>The venue name appears as a large text field at the top. <span class="badge badge-admin">Admin</span> users can tap it to edit and see Google Places autocomplete suggestions. The date and city fields are shown below and are also editable by admins. A timezone row shows the venue's local time (updated every minute).</p>
+    <p>The <strong>eye icon</strong> (admin only) opens the <a href="#visibility">Visibility</a> settings. The <strong>trash icon</strong> (admin only) deletes the entire date — a native confirmation alert is shown before the delete proceeds.</p>
+    <div class="tip"><strong>Undo a deletion:</strong> After deleting a date, a toast slides up from the bottom of the screen for 5 seconds. Tap <strong>Undo</strong> to restore the date instantly. On a physical device you can also <strong>shake the device</strong> within those 5 seconds to trigger the same undo.</div>
+
+    <h3>Quick Action Buttons</h3>
+    <p>A row of five buttons gives fast access to linked screens:</p>
+    <ul>
+      <li><strong>Venue Info</strong> — production, technical, and backstage details</li>
+      <li><strong>Hotel</strong> — hotel name, address, and room assignments</li>
+      <li><strong>Transport</strong> — flights and ground transport</li>
+      <li><strong>Backline</strong> — equipment supplier and gear details</li>
+      <li><strong>Guest List</strong> — manage guests and set a cutoff time</li>
+    </ul>
+
+    <h3>Venue Info Modal</h3>
+    <p>Opens full-screen. Contains fields for:</p>
+    <ul>
+      <li><strong>Load:</strong> Load In Time, Load In Point, Load In Contact, Parking</li>
+      <li><strong>Production:</strong> Audio notes, FOH Mix Position, Monitor Position, Lighting notes, Stage Dimensions, Crowd Barrier toggle (Yes / No)</li>
+      <li><strong>Backstage:</strong> Green Room Location, Catering notes, Wifi network name and password</li>
+    </ul>
+    <p>All text fields automatically expand to fit the content you type — no need to scroll inside an individual field.</p>
+    <p>The form scrolls so that the field you are typing in is never hidden behind the on-screen keyboard.</p>
+    <p><span class="badge badge-admin">Admin</span> <span class="badge badge-tm">Tour Manager</span> can edit all fields. <span class="badge badge-crew">Crew</span> and <span class="badge badge-artist">Artist</span> can view but not edit.</p>
+
+    <h3>Schedule</h3>
+    <p>A timeline showing all schedule items and transport entries for the day, sorted in <strong>chronological order</strong> (earliest first). Items show a time on the left and an activity name on the right, connected by a coloured dot and line. Items with both a start and end time display the time as a range — e.g. <strong>20:15–21:45</strong>.</p>
+    <p>Times are displayed in whichever format is set in <strong>⚙️ Settings → Time Format</strong> (12 hr or 24 hr). Transport entries in the timeline show the party name above the depart/arrive line.</p>
+    <p><span class="badge badge-admin">Admin</span> <span class="badge badge-tm">Tour Manager</span> can tap the <strong>+ button</strong> in the Schedule header to open the dedicated <strong>Schedule</strong> editing screen. From there:</p>
+    <ul>
+      <li>Tap <strong>+ Add Item</strong> to add a new schedule item (Activity Name, Start Time, End Time)</li>
+      <li>Edit the activity name or times for any existing item — changes are saved automatically</li>
+      <li>Delete a schedule item with the trash button — a confirmation prompt is shown before the item is removed</li>
+    </ul>
+    <p>Items are always listed in <strong>chronological order</strong> on the Schedule screen (earliest start time first).</p>
+    <div class="tip"><strong>Time input is always in 24-hour format</strong> (e.g. 17:00 for 5 PM). Times are displayed to all users in their chosen format (12 hr or 24 hr), but must be entered as HH:MM in 24-hour time.</div>
+    <p>Transport items in the timeline are read-only — tap them to go to the Transport screen. Flight entries display the party name and <strong>flight number as a tappable blue link ↗</strong> — tap the flight number to open a Google search for live flight status in your browser.</p>
+    <p>Ground transport <strong>arrive</strong> entries display the arrival location as a <strong>tappable blue link ↗</strong> — tap it to open Google Maps with that address for directions.</p>
+
+    <h3>Set List</h3>
+    <p>Tap the <strong>Set List</strong> section header to expand or collapse it. The song count is shown in brackets.</p>
+    <p><span class="badge badge-admin">Admin</span> <span class="badge badge-tm">Tour Manager</span> can:</p>
+    <ul>
+      <li>Tap <strong>+</strong> to open the Set List Picker — choose songs from the Song Library or copy songs from any other show's set list (<strong>Other Show Set Lists</strong> panel on the right). Use album filter chips to narrow the song list. Tap <strong>Confirm</strong> to apply.</li>
+      <li>Tap <strong>Edit</strong> in the Set List header to enter reorder mode — a <strong>≡ drag handle</strong> appears on the left of each song. Long-press the handle and drag to reorder. Tap <strong>Done</strong> to exit reorder mode. On web, up/down arrows are used instead.</li>
+      <li>Delete individual songs with the trash button</li>
+      <li>Share/export the set list as <strong>PDF</strong> or <strong>Text File</strong> using the share button in the section header</li>
+    </ul>
+    <div class="note"><strong>PDF formatting:</strong> PDF output depends on your device and OS. If the layout doesn't look right, export as a <strong>Text File</strong> instead and reformat in any word processor.</div>
+    <p>The total set runtime is shown at the bottom of the section.</p>
+    <p>Songs that have a <strong>Print Title</strong> set in the Song Library will display that title instead of the song name in the set list on screen, in PDF and text exports, and in the Day Sheet. Songs with a print title show it in blue beneath the song name in the Song Library.</p>
+
+    <h4>Adding a Break</h4>
+    <p><span class="badge badge-admin">Admin</span> <span class="badge badge-tm">Tour Manager</span>: Tap the <strong>— button</strong> in the Set List section header to insert a break marker. Break rows appear as a horizontal divider labelled <em>— Break —</em> and can be repositioned by long-pressing and dragging, just like songs. Breaks are excluded from the total runtime and are not numbered in PDF or text exports.</p>
+
+    <h3>Venue Contacts</h3>
+    <p>Lists venue-specific contacts (promoter, production manager, etc.) as cards showing name, role, company, phone, and email.</p>
+    <p>Tap a <strong>phone number</strong> to choose <strong>Call</strong> or <strong>Message</strong> from an action sheet. Tap an <strong>email address</strong> to open your mail app with the address pre-filled.</p>
+    <p><span class="badge badge-admin">Admin</span> <span class="badge badge-tm">Tour Manager</span> can add and edit contacts. <span class="badge badge-admin">Admin</span> only can delete them.</p>
+    <p>Tap <strong>+ Add Contact</strong> to open the contact form, which has two sections:</p>
+    <ul>
+      <li><strong>Find in Library</strong> — type a name, role, or company into the search field. Matching contacts from your global Contacts list appear instantly as tappable rows. Tap one to add it to the show immediately — no extra confirmation needed.</li>
+      <li><strong>New Contact</strong> — fill in first name, surname, role, company, phone, and email. Tick <strong>Also save to Contacts library</strong> to store the contact in the global Contacts list as well as on this show, then tap <strong>Add</strong> in the top-right corner.</li>
+    </ul>
+    <p>To edit an existing venue contact, tap the <strong>pencil icon</strong> on its card. The form reopens pre-filled (the library search is hidden in edit mode) — make your changes and tap <strong>Save</strong>.</p>
+    <p><span class="badge badge-admin">Admin</span> <span class="badge badge-tm">Tour Manager</span>: tap <strong>Edit</strong> in the Venue Contacts header to enter reorder mode. A <strong>≡ drag handle</strong> appears on the left of each contact card — long-press it and drag to reorder. Tap <strong>Done</strong> when finished.</p>
+    <p>Attach any file to the show — PDFs, Word documents, images, spreadsheets, and more. Files are uploaded to cloud storage and are accessible to all team members on any device.</p>
+    <p><span class="badge badge-admin">Admin</span> <span class="badge badge-tm">Tour Manager</span> can:</p>
+    <ul>
+      <li>Tap <strong>+</strong> to pick a file from the device — it uploads to cloud storage automatically (max 5 MB per file)</li>
+      <li>On <strong>web</strong>: drag and drop files directly onto the dashed drop zone</li>
+      <li>Delete files with the trash button (confirmation required) — removes the file from cloud storage too</li>
+      <li>Tap <strong>Edit</strong> in the Files header to enter reorder mode — long-press the <strong>≡ drag handle</strong> on any file card and drag it to a new position. Tap <strong>Done</strong> to exit reorder mode.</li>
+    </ul>
+    <p>Tapping a file opens it:</p>
+    <ul>
+      <li><strong>Images</strong> — full-screen image viewer</li>
+      <li><strong>PDFs</strong> — in-app PDF viewer with Share button</li>
+      <li><strong>DOCX / Word</strong> — in-app document viewer with Share button (iOS)</li>
+      <li><strong>Other files</strong> — system share sheet so you can open in another app</li>
+    </ul>
+
+    <h3 id="visibility">Visibility Settings <span class="badge badge-admin">Admin</span></h3>
+    <p>Visibility lets you control exactly who can see a tour or an individual date. Dates (and tours) that a user cannot see are completely hidden from their list — they are not shown as locked or greyed out, they simply don't appear.</p>
+    <div class="note"><strong>Admins always see everything.</strong> Visibility restrictions only apply to Tour Manager, Crew, and Artist roles.</div>
+
+    <h4>Tour-Level Visibility</h4>
+    <p>To restrict an entire tour, tap the <strong>eye icon</strong> on the tour's header row on the main Dates screen. The eye turns <strong>blue</strong> when a restriction is active. Choose <strong>Everyone</strong> or <strong>Restricted</strong>.</p>
+    <p>Tour-level visibility is the <strong>default</strong> for every date in that tour. If a date has no explicit visibility setting of its own, it inherits the tour restriction exactly — a user who can't see the tour won't see any of its dates either.</p>
+    <div class="tip">When you save a tour visibility change, any user who is now allowed at the tour level is automatically un-excluded from individual dates where they had previously been blocked. This means <strong>re-adding someone to a tour restores their access to all dates</strong> — you don't need to go through each date manually.</div>
+
+    <h4>Date-Level Visibility (Override)</h4>
+    <p>To override visibility for a single date, open the Show screen for that date and tap the <strong>eye icon</strong> in the header. The <strong>Date Visibility</strong> modal opens. Choose:</p>
+    <ul>
+      <li><strong>Everyone</strong> &mdash; all users can see this date, regardless of any tour-level restriction.</li>
+      <li><strong>Restricted</strong> &mdash; only the selected groups and/or users can see this date, regardless of the tour-level setting.</li>
+    </ul>
+    <p>Setting either option on a date marks it as <strong>explicitly set</strong>, which breaks the link to the tour-level default for that date. The rules are:</p>
+    <ul>
+      <li><strong>Date has no explicit setting</strong> &rarr; inherits the tour's visibility.</li>
+      <li><strong>Date explicitly set to Everyone</strong> &rarr; visible to all users, even if the rest of the tour is restricted. Useful for adding a single date to someone not on the tour.</li>
+      <li><strong>Date explicitly set to Restricted</strong> &rarr; only the people listed on that date can see it, regardless of tour visibility. Can be <em>narrower</em> or <em>wider</em> than the tour restriction.</li>
+    </ul>
+    <div class="tip">Example: The tour is restricted to Band only. Open a specific date, set visibility to <strong>Restricted</strong>, and add your local crew member. That one date is now visible to them &mdash; the rest of the tour remains Band-only.</div>
+    <div class="tip">Example: The tour is restricted. Open a date, set it to <strong>Everyone</strong>, and it punches through the tour restriction &mdash; everyone can see that date even though the rest of the tour is hidden.</div>
+    <div class="note"><strong>Date overrides are independent.</strong> Removing a user from a tour does not automatically remove their access to dates they were explicitly added to at the date level. If you want to remove someone from a specific date, open that date's visibility settings and untick them there. Conversely, re-adding someone at the tour level <em>does</em> automatically clear any date-level exclusions for them (see above).</div>
+
+    <h4>Adding Someone to Specific Dates Without Joining the Tour</h4>
+    <p>You can give a user access to one or more specific dates without adding them to the tour at all:</p>
+    <ol>
+      <li>Leave the tour visibility as <strong>Restricted</strong> (they are not in the tour's user list).</li>
+      <li>Open each date you want them to see and set that date's visibility to <strong>Restricted</strong>, then add them individually.</li>
+    </ol>
+    <p>The tour card will appear for them (because they have access to at least one date inside it), but they will only see the specific dates you have granted access to.</p>
+
+    <h4>Selecting Groups &amp; Users (Restricted mode)</h4>
+    <p>When <strong>Restricted</strong> is chosen, the modal shows:</p>
+    <ul>
+      <li><strong>User Groups</strong> &mdash; select one or more groups. Every member of a selected group is granted access. When a group is selected, its members appear indented beneath it so you can exclude individuals (see below).</li>
+      <li><strong>Individual Users</strong> &mdash; users not covered by any selected group. Tick to grant access.</li>
+    </ul>
+    <p>A <strong>search bar</strong> at the top lets you find any user by name or email. When searching:</p>
+    <ul>
+      <li>All matching users are shown in a single flat list, regardless of group membership.</li>
+      <li>Users covered by a selected group show <em>via [Group Name]</em> as their subtitle and are ticked blue. <strong>Tapping them toggles their exclusion</strong> from the group — untick to hide them even though they're in the group.</li>
+      <li>Users not in any selected group can be individually ticked or unticked as normal.</li>
+    </ul>
+    <p>Tap <strong>Done</strong> to save. Tap <strong>Cancel</strong> to discard changes.</p>
+
+    <h4>Per-Member Exclusions (Group Sub-list)</h4>
+    <p>When a group is selected in the normal (non-search) view, its members appear indented beneath the group row, each with a blue tick. <strong>Untick any member</strong> to exclude that individual from this tour or date even though they are in the group — useful for keeping one person hidden without removing them from the group entirely. Their row dims to confirm they are excluded.</p>
+
+    <h4>Visibility Indicator in the Dates List</h4>
+    <p>A small <strong>eye icon</strong> appears on date rows in the Dates list whenever that date has a visibility restriction set. <strong>This icon is only visible to Admins and Tour Managers</strong> &mdash; Crew and Artists never see it.</p>
+
+    <h3>Day Sheet</h3>
+    <p>A <strong>Share Day Sheet</strong> button appears at the bottom of the Show screen for <span class="badge badge-admin">Admin</span> and <span class="badge badge-tm">Tour Manager</span> users. Tap it to generate a formatted Day Sheet document for the current date containing the day notes, a unified schedule (schedule items and transport entries sorted by time), the set list, and venue contacts.</p>
+    <p>Three format options are available:</p>
+    <ul>
+      <li><strong>Preview PDF</strong> — opens the native iOS print panel with a full paginated PDF preview. You can pinch-to-zoom and share directly from the preview using the share icon in the top-right corner.</li>
+      <li><strong>Share PDF</strong> — generates the PDF and goes straight to the share sheet so you can send it via AirDrop, email, WhatsApp, etc.</li>
+      <li><strong>Text File</strong> — generates a plain-text <code>.txt</code> file named <em>day-sheet DD-MM-YYYY.txt</em> (e.g. <em>day-sheet 14-3-2026.txt</em>) and opens the share sheet.</li>
+    </ul>
+    <div class="tip">The Day Sheet PDF uses the organisation name as a header, followed by venue, address, tour, date, and city. Transport entries appear in the schedule in chronological order alongside regular schedule items — ground arrivals show a Maps link in the PDF. Venue contact emails are plain text in the PDF but are tappable links in the app.</div>
+    <div class="note"><strong>PDF formatting:</strong> PDF rendering is subject to variation depending on device, OS version, PDF viewer, and the amount of content on the page. If the output isn't formatted to your liking — for example margins, line breaks, or page flow look off — use the <strong>Text File</strong> option instead and open the <code>.txt</code> file in any word processor or text editor to reformat and print as needed.</div>
+
+    <h3>Day Notes</h3>
+    <p>The <strong>Day Notes</strong> section near the top of the Show screen contains two separate note fields, each labelled with a coloured badge so readers know who wrote them:</p>
+    <ul>
+      <li><strong><span style="background:#4a9eff;color:#fff;border-radius:4px;padding:1px 7px;font-size:11px;font-weight:600;">Admin</span></strong> &mdash; visible to all users, but only editable by <span class="badge badge-admin">Admin</span>. Use this for internal or management-level notes.</li>
+      <li><strong><span style="background:#7c3aed;color:#fff;border-radius:4px;padding:1px 7px;font-size:11px;font-weight:600;">TM</span></strong> &mdash; visible to all users, editable by <span class="badge badge-admin">Admin</span> and <span class="badge badge-tm">Tour Manager</span>. Use this for day-of operational notes.</li>
+    </ul>
+    <p>Both fields appear within the same <strong>Day Notes</strong> card. If a field is empty and the current user doesn't have permission to edit it, that field is hidden automatically. The notes content also appears at the top of the generated Day Sheet.</p>
+
+    <h3>Saving</h3>
+    <p>All editable fields on the Show Screen save <strong>automatically</strong> as you type — no save button required.</p>
+
+    <div class="tip">Auto-save triggers 1.5 seconds after you stop typing. If the device is offline, changes are stored locally and synced to the cloud when connectivity returns.</div>
+
+    <nav class="section-nav">
+      <a href="#dates" class="nav-prev">Tour Dates</a>
+      <div class="nav-spacer"></div>
+      <a href="#hotel" class="nav-next">Hotel</a>
+    </nav>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ 5. HOTEL ═══ -->
+  <section class="section" id="hotel">
+    <h2 class="section-title"><span class="section-icon">🏨</span>Hotel</h2>
+    <p>Access from the <strong>Hotel</strong> quick-action button on the Show screen. A show date can have <strong>multiple hotels</strong> — useful when band and crew are staying at different locations. Each hotel has its own name, address, notes, and room list.</p>
+
+    <h3>Multiple Hotels</h3>
+    <p>Hotels are displayed as collapsible sections. Tap a hotel header to expand or collapse it. The header shows the hotel name (or "Hotel 1", "Hotel 2", etc. until a name is entered).</p>
+    <p><span class="badge badge-admin">Admin</span> <span class="badge badge-tm">Tour Manager</span>: Tap <strong>Add Hotel</strong> at the bottom of the screen to add another hotel for the same date. If more than one hotel exists, a trash icon appears in each hotel's header to remove it.</p>
+
+    <h3>Hotel Details</h3>
+    <p><span class="badge badge-crew">Crew</span> and <span class="badge badge-artist">Artist</span> users can view hotel details but cannot edit them. The hotel name and full address are always displayed clearly for all users.</p>
+    <ul class="field-list">
+      <li><span class="field-name">Hotel Name</span><span class="field-desc">Search field with Google Places autocomplete — editable by <span class="badge badge-admin">Admin</span> <span class="badge badge-tm">Tour Manager</span> only. Selecting a result automatically fills the Hotel Address. If the hotel doesn't appear in the search results, simply type the name directly — it is saved as entered.</span></li>
+      <li><span class="field-name">Hotel Address</span><span class="field-desc">Google Places autocomplete search field — type to find and select an address. If the address isn't found in search results, type it manually. Auto-filled when a hotel name is selected from Google Places. Editable by Admin and Tour Manager.</span></li>
+      <li><span class="field-name">Hotel Notes</span><span class="field-desc">Multiline free-text — e.g. check-in instructions, parking notes. Editable by Admin and Tour Manager; visible to all.</span></li>
+    </ul>
+
+    <h3>Room Assignments</h3>
+    <p>Each hotel has its own room list. Rooms are listed as collapsible cards — tap a card header to expand or collapse it. Each room has:</p>
+    <ul class="field-list">
+      <li><span class="field-name">Name / Guest</span><span class="field-desc">Start typing a name to search the crew list — matching crew members appear in a dropdown. Tap a name to fill the field instantly. You can also type any freeform name for non-crew guests.</span></li>
+      <li><span class="field-name">Check In</span><span class="field-desc">dd/mm/yyyy — auto-formatted as you type.</span></li>
+      <li><span class="field-name">Check Out</span><span class="field-desc">dd/mm/yyyy — auto-formatted as you type.</span></li>
+      <li><span class="field-name">Room Number</span><span class="field-desc">The hotel room or suite number. <span class="badge badge-admin">Admin</span> <span class="badge badge-tm">Tour Manager</span> can edit any room's number. <span class="badge badge-crew">Crew</span> and <span class="badge badge-artist">Artist</span> can edit the Room Number field on the room assigned to their own name.</span></li>
+      <li><span class="field-name">Booking Reference</span><span class="field-desc">Confirmation or booking reference code.</span></li>
+      <li><span class="field-name">Cost</span><span class="field-desc">The cost for this individual room. The currency is shared across all rooms in the same hotel and is set via the currency picker in the <strong>Room Costs</strong> panel. Editable by <span class="badge badge-admin">Admin</span> <span class="badge badge-tm">Tour Manager</span> only.</span></li>
+      <li><span class="field-name">Tax</span><span class="field-desc">Tax amount for this room (e.g. GST, VAT). Optional — leave blank if not applicable.</span></li>
+    </ul>
+
+    <h3>Room Costs &amp; Finance</h3>
+    <p>Each hotel has a <strong>Room Costs</strong> panel above the room list. Tap the currency button (e.g. <strong>AUD</strong>) to open the currency picker — a full-screen modal with all major world currencies. A <strong>total summary</strong> appears automatically, summing all room costs and taxes. The currency applies to all rooms in that hotel.</p>
+    <p>Individual room <strong>Cost</strong> and <strong>Tax</strong> fields are shown in each room card. These fields are only visible to users with finance access.</p>
+    <p>When any room has a cost entered, the hotel is automatically added to the <strong>Finance</strong> screen as an <em>Accommodation</em> expense. The description includes the hotel name, address, and number of rooms (e.g. <em>Grand Hyatt - 123 St - 3 rooms</em>). The entry is removed automatically if all room costs are cleared.</p>
+    <div class="note"><strong>Finance Visibility:</strong> The Room Costs panel and per-room cost fields are only visible to users with finance access. If Finance Visibility is set to <em>Admin Only</em> in Organisation Settings, Tour Managers will not see these fields. See <a href="#settings">Settings</a> for more details.</div>
+
+    <h3>Bulk Add Rooms</h3>
+    <p>Each hotel has an <strong>Add Rooms</strong> panel. Set a Check In and Check Out date, then tap <strong>Add Users…</strong> to open the crew picker. Select individuals or entire groups and tap confirm — a room is created for each selected person with the dates pre-filled. People who already have a room in that hotel are skipped automatically.</p>
+    <p>Tap <strong>+ Add Single Room</strong> (below the room list) to add one blank room manually.</p>
+    <p>Tap the trash icon on a room card to delete it.</p>
+
+    <h3>Saving</h3>
+    <p>All hotel fields save <strong>automatically</strong> as you type — no save button required. Tap the back arrow to return to the Show view at any time.</p>
+
+    <nav class="section-nav">
+      <a href="#show" class="nav-prev">Show Screen</a>
+      <div class="nav-spacer"></div>
+      <a href="#transport" class="nav-next">Transport</a>
+    </nav>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ 6. TRANSPORT ═══ -->
+  <section class="section" id="transport">
+    <h2 class="section-title"><span class="section-icon">✈️</span>Transport</h2>
+    <p>Access from the <strong>Transport</strong> quick-action button on the Show screen. Records all travel for the day — flights and ground transport (bus, van, taxi, train, etc.).</p>
+    <p>Entries are listed in <strong>chronological order by departure time</strong> (earliest first). Entries without a departure time appear at the bottom.</p>
+    <p>Transport entries linked to a show date also appear in the Show screen's <strong>Schedule</strong> timeline alongside schedule items.</p>
+
+    <h3>Transport Entry Types</h3>
+    <ul>
+      <li><strong>Plane</strong> — flight with airline, flight number, departure/arrival airport codes, departure/arrival times, and optional seat info.</li>
+      <li><strong>Ground</strong> — any non-flight leg (bus, van, taxi, train). Has departure and arrival name fields, optional notes, and a distance/duration route estimate.</li>
+    </ul>
+
+    <h3>Adding a Transport Entry <span class="badge badge-admin">Admin</span> <span class="badge badge-tm">Tour Manager</span></h3>
+    <ol class="steps">
+      <li>Tap <strong>+ Add Flight</strong> or <strong>+ Add Ground</strong>.</li>
+      <li>Fill in the relevant fields (see below).</li>
+      <li>Tap <strong>Save</strong> or navigate away — entries are saved automatically as you type.</li>
+    </ol>
+
+    <h4>Flight Fields</h4>
+    <ul class="field-list">
+      <li><span class="field-name">Airline</span><span class="field-desc">Carrier name (e.g. Qantas).</span></li>
+      <li><span class="field-name">Flight Number</span><span class="field-desc">e.g. QF409.</span></li>
+      <li><span class="field-name">Departure Airport</span><span class="field-desc">IATA code (e.g. SYD).</span></li>
+      <li><span class="field-name">Arrival Airport</span><span class="field-desc">IATA code (e.g. MEL).</span></li>
+      <li><span class="field-name">Departure Time</span><span class="field-desc">Local departure time.</span></li>
+      <li><span class="field-name">Arrival Time</span><span class="field-desc">Local arrival time.</span></li>
+    </ul>
+    <div class="tip">Tap the <strong>search icon</strong> next to the flight number to auto-fill airline, departure/arrival airports, and times using the live flight search feature. Once a flight number is entered, tap the <strong>blue flight number link ↗</strong> to open a Google search for that flight's live status in your browser.</div>
+
+    <h4>Ground Transport Fields</h4>
+    <ul class="field-list">
+      <li><span class="field-name">Type</span><span class="field-desc">Bus, Van, Taxi, Train, Car, or Other.</span></li>
+      <li><span class="field-name">Depart</span><span class="field-desc">Departure location name. Tap the <strong>blue pin icon</strong> to choose from known locations for this show date (venue, hotel, city) — see Location Quick-Pick below.</span></li>
+      <li><span class="field-name">Arrive</span><span class="field-desc">Arrival location name. Same pin icon quick-pick available.</span></li>
+      <li><span class="field-name">Departure Time</span><span class="field-desc">Local time of departure.</span></li>
+      <li><span class="field-name">Notes</span><span class="field-desc">Optional free text (driver name, booking reference, etc.).</span></li>
+    </ul>
+
+    <h3>Location Quick-Pick</h3>
+    <p>For ground transport entries, a <strong>blue pin icon</strong> appears next to the Depart and Arrive labels. Tapping it opens a bottom sheet showing known locations for this show date:</p>
+    <ul>
+      <li><strong>Venue</strong> — pulled from the show's venue name and address</li>
+      <li><strong>Hotels</strong> — all hotels for this date (and the previous date) appear as individual options, including hotels entered manually without a Google Places selection</li>
+      <li><strong>City</strong> — the show city as a fallback</li>
+    </ul>
+    <p>Tap any location card to instantly fill the field. The route distance and duration are automatically recalculated after selection.</p>
+
+    <h3>Route Calculation</h3>
+    <p>When both Depart and Arrive fields are filled for a ground entry, the app calculates an estimated driving distance and duration using Google Maps and displays them on the entry card.</p>
+
+    <h3>Flight Cost &amp; Finance</h3>
+    <p>For <strong>Plane</strong> entries, a <strong>Flight Cost</strong> section appears below the booking reference. Enter the cost and optional tax amount for the flight. Tap the currency button (e.g. <strong>AUD</strong>) to open the currency picker — a full-screen modal with all major world currencies. The current selection is highlighted with a checkmark.</p>
+    <p>When a flight cost is entered, the entry is automatically added to the <strong>Finance</strong> screen as a <em>Travel</em> expense. The description includes the party name, route (e.g. SYD → MEL), flight number, and booking reference. The entry is removed automatically if the cost is cleared or the transport entry is deleted.</p>
+    <div class="note"><strong>Finance Visibility:</strong> The Flight Cost fields are only visible to users with finance access. If Finance Visibility is set to <em>Admin Only</em> in Organisation Settings, Tour Managers will not see these fields. See <a href="#settings">Settings</a> for more details.</div>
+
+    <h3>Editing &amp; Deleting <span class="badge badge-admin">Admin</span> <span class="badge badge-tm">Tour Manager</span></h3>
+    <p>All fields are editable inline — tap any field to update it. Tap the <strong>trash icon</strong> on an entry to delete it (confirmation required).</p>
+
+    <nav class="section-nav">
+      <a href="#hotel" class="nav-prev">Hotel</a>
+      <div class="nav-spacer"></div>
+      <a href="#backline" class="nav-next">Backline</a>
+    </nav>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ 7. BACKLINE ═══ -->
+  <section class="section" id="backline">
+    <h2 class="section-title"><span class="section-icon">🎸</span>Backline</h2>
+    <p>Access from the <strong>Backline</strong> quick-action button on the Show screen. Records equipment supplier details and gear specifications for a specific show.</p>
+
+    <h3>Fields</h3>
+    <ul class="field-list">
+      <li><span class="field-name">Company</span><span class="field-desc">Company or individual supplying the backline. Start typing to search the Contacts library — matching entries appear in a dropdown. Tap a result to auto-fill Company, First Name, Surname, Email, and Phone in one tap.</span></li>
+      <li><span class="field-name">First Name</span><span class="field-desc">The supplier contact's first name.</span></li>
+      <li><span class="field-name">Surname</span><span class="field-desc">The supplier contact's surname.</span></li>
+      <li><span class="field-name">Email</span><span class="field-desc">Supplier contact email.</span></li>
+      <li><span class="field-name">Phone</span><span class="field-desc">Supplier contact phone.</span></li>
+      <li><span class="field-name">Drums</span><span class="field-desc">Drum kit specification (multiline).</span></li>
+      <li><span class="field-name">Amps</span><span class="field-desc">Amplifier specification (multiline).</span></li>
+      <li><span class="field-name">Cabinets</span><span class="field-desc">Cabinet / speaker cabinet specification (multiline).</span></li>
+      <li><span class="field-name">Misc</span><span class="field-desc">Any other equipment or notes (multiline).</span></li>
+      <li><span class="field-name">Cost</span><span class="field-desc">The total cost for backline hire. Tap the currency button to open the currency picker — a full-screen modal with all major world currencies. Only visible to users with finance access (see Finance Visibility in <a href="#settings">Settings</a>).</span></li>
+      <li><span class="field-name">Tax</span><span class="field-desc">Tax amount on the backline cost (e.g. GST, VAT). Optional — leave blank if not applicable. Only visible to users with finance access.</span></li>
+    </ul>
+    <p>All fields autosave as you type. <span class="badge badge-crew">Crew</span> and <span class="badge badge-artist">Artist</span> users can view non-finance fields but cannot edit them.</p>
+    <p>When a cost is entered, the backline entry is automatically added to the <strong>Finance</strong> screen as a <em>Backline</em> expense, with the supplier company name and show city in the description. The entry is removed automatically if the cost is cleared.</p>
+
+    <nav class="section-nav">
+      <a href="#transport" class="nav-prev">Transport</a>
+      <div class="nav-spacer"></div>
+      <a href="#finance" class="nav-next">Finance</a>
+    </nav>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ 7b. FINANCE ═══ -->
+  <section class="section" id="finance">
+    <h2 class="section-title"><span class="section-icon">💰</span>Finance <span class="badge badge-admin">Admin</span> <span class="badge badge-tm">Tour Manager</span></h2>
+    <p>Access via the <strong>💰 Finance</strong> option in the ⋮ top-right menu. The Finance screen provides a centralised view of all income and expenses across your tours — including entries auto-synced from Transport (flight costs), Hotels (room costs), and Backline (hire costs).</p>
+    <div class="note"><strong>Finance Visibility</strong> is controlled by an Admin setting in Organisation Settings. The default is <em>Admin + Tour Manager</em>, meaning both roles can access the Finance screen and see cost fields on Transport, Hotel, and Backline. When set to <em>Admin Only</em>, Tour Managers lose access to all finance data — the Finance tab is hidden and cost/currency fields on Transport, Hotel, and Backline are hidden from them. Crew and Artist users never have finance access regardless of this setting.</div>
+
+    <h3>Summary Cards</h3>
+    <p>At the top of the screen, two summary cards display the total <strong>Income</strong> and total <strong>Expenses</strong> across all visible entries, broken down per currency. A net total (income minus expenses) is shown for each currency beneath the cards.</p>
+
+    <h3>Filter</h3>
+    <p>Tap the <strong>filter button</strong> to narrow the entry list. On iOS an action sheet appears; on web the options are shown inline. Options:</p>
+    <ul>
+      <li><strong>All</strong> — every entry</li>
+      <li><strong>Income</strong> — income entries only</li>
+      <li><strong>Expenses</strong> — expense entries only</li>
+      <li><strong>Tax on Income</strong> — income entries that have a tax amount recorded</li>
+      <li><strong>Tax on Expenses</strong> — expense entries that have a tax amount recorded</li>
+    </ul>
+
+    <h3>Entry Cards</h3>
+    <p>Each entry card shows the date, category badge, description, and amount with currency. If a tax amount is recorded it appears beneath the main amount. Entries are sorted by date, newest first.</p>
+
+    <h3>Adding an Entry Manually <span class="badge badge-admin">Admin</span> <span class="badge badge-tm">Tour Manager</span></h3>
+    <p>Tap <strong>+ Add Entry</strong> to open the entry form. Fields:</p>
+    <ul class="field-list">
+      <li><span class="field-name">Type</span><span class="field-desc">Income or Expense.</span></li>
+      <li><span class="field-name">Category</span><span class="field-desc">Income: Guarantee, Ticket Sales, Merchandise, Streaming, Sync, Sponsorship, Other Income. Expense: Travel, Accommodation, Production, Backline, Crew Wages, Equipment, Venue, Agency Commission, Marketing, Catering, Other Expense.</span></li>
+      <li><span class="field-name">Description</span><span class="field-desc">Free-text description of the entry (multiline).</span></li>
+      <li><span class="field-name">Amount</span><span class="field-desc">The monetary amount.</span></li>
+      <li><span class="field-name">Tax</span><span class="field-desc">Optional tax component (e.g. GST, VAT). Leave blank if not applicable.</span></li>
+      <li><span class="field-name">Currency</span><span class="field-desc">Tap to open the currency picker — a full-screen modal listing all major world currencies. The current selection is highlighted with a checkmark.</span></li>
+      <li><span class="field-name">Date</span><span class="field-desc">yyyy-mm-dd format.</span></li>
+    </ul>
+    <p>Tap <strong>Save</strong> to add the entry. Tap an existing entry to edit it. Tap the <strong>trash icon</strong> to delete it (confirmation required).</p>
+
+    <h3>Auto-Synced Entries</h3>
+    <p>The following screens automatically create or update Finance entries when costs are entered — no manual action needed:</p>
+    <ul>
+      <li><strong>Transport</strong> (Plane entries) — creates a <em>Travel</em> expense. Description includes the party, route (e.g. SYD → MEL), flight number, and booking reference.</li>
+      <li><strong>Hotel</strong> — creates an <em>Accommodation</em> expense using the total of all room costs and taxes. Description includes the hotel name, address, and room count.</li>
+      <li><strong>Backline</strong> — creates a <em>Backline</em> expense. Description includes the supplier company name and show city.</li>
+    </ul>
+    <p>Auto-synced entries update every time the source screen autosaves. If the cost is cleared at the source, the Finance entry is deleted automatically. Auto-synced entries cannot be edited or deleted directly from the Finance screen.</p>
+
+    <h3>CSV Export <span class="badge badge-admin">Admin</span> <span class="badge badge-tm">Tour Manager</span></h3>
+    <p>Tap <strong>Export CSV</strong> to download all entries as a spreadsheet-compatible CSV file. Columns: date, type, category, description, amount, tax, currency. On iOS the share sheet opens so you can send the file to Numbers, Excel, email, or any other app.</p>
+
+    <nav class="section-nav">
+      <a href="#backline" class="nav-prev">Backline</a>
+      <div class="nav-spacer"></div>
+      <a href="#guest-list" class="nav-next">Guest List</a>
+    </nav>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ 8. GUEST LIST ═══ -->
+  <section class="section" id="guest-list">
+    <h2 class="section-title"><span class="section-icon">🎟️</span>Guest List</h2>
+    <p>Access from the <strong>Guest List</strong> quick-action button on the Show screen. Manages the door list for a specific show.</p>
+
+    <h3>Cutoff Time</h3>
+    <p>A cutoff card is always shown at the top. Once the cutoff passes, <span class="badge badge-crew">Crew</span> and <span class="badge badge-artist">Artist</span> users can no longer add or modify guests and will see a red warning banner.</p>
+    <p><span class="badge badge-admin">Admin</span> <span class="badge badge-tm">Tour Manager</span> can set or clear the cutoff at any time and are never blocked by it.</p>
+
+    <h4>Setting the Cutoff</h4>
+    <ol class="steps">
+      <li>Tap <strong>Set Cutoff</strong> (or <strong>Change</strong> if one is already set).</li>
+      <li>On iOS: use the date spinner, tap <strong>Next</strong>, then set the time, tap <strong>Done</strong>.</li>
+      <li>On Android: the native date and time pickers appear in sequence.</li>
+      <li>On web: enter the date and time in text fields, then tap <strong>Done</strong>.</li>
+    </ol>
+
+    <h3>Guest Limit <span class="badge badge-admin">Admin</span></h3>
+    <p>A maximum guest count can be set inside the cutoff card. Only <span class="badge badge-admin">Admin</span> users can set or change this value.</p>
+    <ul>
+      <li>Tap <strong>Set Limit</strong> and enter a number (e.g. 50), then tap <strong>Save</strong>. The counter immediately shows <strong>current / limit</strong> and turns red when the cap is reached.</li>
+      <li>Leave the field blank and tap <strong>Save</strong> to remove the limit.</li>
+      <li><span class="badge badge-tm">Tour Manager</span> users can see the current / limit counter but cannot change the limit.</li>
+      <li>When the limit is reached, any attempt to add another guest will be blocked with an alert — regardless of role.</li>
+    </ul>
+    <div class="note">The guest limit counts total guests across all entries, taking the <strong>Quantity</strong> field into account. One entry with Qty&nbsp;3 counts as three guests against the limit.</div>
+
+    <h3>Adding Guests</h3>
+    <ol class="steps">
+      <li>Tap the <strong>Add Guest</strong> button below the guest list.</li>
+      <li>A form slides up from the bottom. Fill in <strong>First Name</strong>, <strong>Last Name</strong>, <strong>Quantity</strong> (defaults to 1), and optional <strong>Notes</strong> (e.g. VIP, AAA, Photo Pass), <strong>Phone</strong>, and <strong>Email</strong>.</li>
+      <li>Tap <strong>Add Guest</strong> to save, or tap outside the form or the ✕ button to dismiss without saving.</li>
+    </ol>
+    <p>Each guest card shows the name, quantity, notes, and any phone/email details entered. Below the name, a <strong>Requested by</strong> line shows the display name of the user who added the guest, along with the date they were added (<strong>Requested on</strong>). Both fields are set automatically — they are not entered manually. The running total is shown at the top of the list.</p>
+
+    <h3>Approving &amp; Denying Guests <span class="badge badge-admin">Admin</span> <span class="badge badge-tm">Tour Manager</span></h3>
+    <p>Every guest card has two status pill buttons on the right side:</p>
+    <ul>
+      <li><strong>Approve</strong> — tap to mark the guest as approved (green pill, green left border on the card). Tap again to revert to pending.</li>
+      <li><strong>Deny</strong> — tap to mark the guest as denied (red pill, red left border, card dimmed). Tap again to revert to pending.</li>
+    </ul>
+    <p>Approve and Deny are mutually exclusive — setting one clears the other. <span class="badge badge-crew">Crew</span> and <span class="badge badge-artist">Artist</span> users see a read-only pill showing <strong>Approved</strong>, <strong>Denied</strong>, or <strong>Pending</strong> and cannot change it.</p>
+    <p>The running approved count is shown in two places: below the guest list heading on the left, and as an <strong>Approved: N</strong> total on the right (next to the overall Total). Both update immediately as you approve or deny guests. The right-side total reflects quantities, so a guest with a quantity of 2 counts as 2.</p>
+
+    <h4>Approve All</h4>
+    <p><span class="badge badge-admin">Admin</span> <span class="badge badge-tm">Tour Manager</span>: Tap the <strong>Approve All</strong> checkbox in the guest list header to approve every guest at once. Tap it again to unapprove all.</p>
+
+    <h3>Editing &amp; Deleting Guests</h3>
+    <p>Tap the <strong>pencil icon</strong> on a guest card to open the edit form in the same bottom-sheet modal. Make your changes, then tap <strong>Update Guest</strong> to save or <strong>Cancel</strong> to discard. Tap the <strong>trash icon</strong> to delete a guest (confirmation required).</p>
+    <p><span class="badge badge-artist">Artist</span> users can also edit and delete guests that they personally added — pencil and trash icons appear on their own entries only.</p>
+
+    <h3>Exporting the Guest List <span class="badge badge-admin">Admin</span> <span class="badge badge-tm">Tour Manager</span></h3>
+    <p>The <strong>Export Guest List</strong> button appears when at least one guest has been added. Tapping it generates a PDF of <strong>approved guests only</strong>, sorted by surname, with separate Surname and First Name columns followed by quantity, notes, phone, email, and who requested each guest.</p>
+    <p>On iOS and Android the PDF opens in the in-app viewer where you can pinch-to-zoom and tap <strong>Share</strong> to send via AirDrop, email, or any other share option. On web, the browser print dialog opens instead.</p>
+
+    <nav class="section-nav">
+      <a href="#finance" class="nav-prev">Finance</a>
+      <div class="nav-spacer"></div>
+      <a href="#calendar" class="nav-next">Calendar</a>
+    </nav>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ 9. CALENDAR ═══ -->
+  <section class="section" id="calendar">
+    <h2 class="section-title"><span class="section-icon">📅</span>Calendar</h2>
+    <p>The <strong>Calendar</strong> tab shows all tour dates in a standard monthly grid. Days with shows have a coloured dot beneath the day number. Today is highlighted distinctly. The calendar always opens on the <strong>current month</strong> every time the tab is pressed.</p>
+
+    <h3>Navigating Months</h3>
+    <p>Tap the <strong>left arrow</strong> for the previous month, <strong>right arrow</strong> for the next. If you navigate away from the current month, tap the <strong>Today's date</strong> button (purple pill) to jump straight back to today's month.</p>
+
+    <h3>Today's Show Button</h3>
+    <p>Tap the <strong>Today's show</strong> button (green pill) to open the Show Screen for today's date. If today has no booked date, an alert displays <em>"Nothing booked. Enjoy your day off! 🌞"</em></p>
+
+    <h3>Viewing Show Details</h3>
+    <p>Tap any day to select it. If that day has shows, a detail panel appears below the calendar. Each entry shows the tour name and either <strong>city @ venue</strong> (for show days) or the <strong>custom day name</strong> if no venue is set — for example, <em>"Travel Home from Sydney"</em>. Tap an entry to open the full <a href="#show">Show Screen</a>.</p>
+
+    <h3>Subscribe to Calendar</h3>
+    <p>Tap the <strong>blue calendar icon button</strong> (floating at the bottom-right of the screen) to push all your tour dates to a live calendar feed. iOS Calendar will open automatically. Then:</p>
+    <ol>
+      <li>Tap <strong>Subscribe</strong> in the top-right corner of iOS Calendar.</li>
+      <li>Tap <strong>Add Calendar</strong> on the confirmation screen that follows.</li>
+    </ol>
+    <p>A <em>World Tour Pro</em> calendar will appear in your iOS Calendar app and stay up to date automatically whenever tour dates change — no manual re-sync needed.</p>
+    <div class="tip">If the <strong>Subscribe</strong> button appears greyed out, close iOS Calendar, go back to the app, and tap the calendar button again. This re-pushes the latest dates and re-opens the subscription prompt.</div>
+
+    <h3>Adding a Date from Calendar <span class="badge badge-admin">Admin</span></h3>
+    <p>Select a day and tap the <strong>+ Add Show</strong> button to open the Add Show modal for that date. Fill in the tour, city, venue, and details, then tap <strong>Save</strong> or <strong>Save &amp; Open</strong> to immediately navigate to the new show.</p>
+
+    <nav class="section-nav">
+      <a href="#guest-list" class="nav-prev">Guest List</a>
+      <div class="nav-spacer"></div>
+      <a href="#songs" class="nav-next">Songs</a>
+    </nav>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ 10. SONGS ═══ -->
+  <section class="section" id="songs">
+    <h2 class="section-title"><span class="section-icon">🎵</span>Song List</h2>
+    <p>The <strong>Songs</strong> tab is the master library of songs for the organisation. Songs added here can be pulled into set lists on the Show Screen.</p>
+
+    <h3>Browsing Songs</h3>
+    <p>Songs are grouped by album. Tap an album header to expand or collapse it. Each album shows its song count and total duration. Albums are sorted <strong>newest first</strong> by release year by default, or in the admin's custom order if one has been set. Songs within each album are listed in the order they were last arranged. The total library runtime is shown at the top.</p>
+
+    <h3>Adding a Song <span class="badge badge-admin">Admin</span></h3>
+    <ol class="steps">
+      <li>Fill in the <strong>Song Name</strong>, <strong>Duration</strong> (minutes and seconds), an optional <strong>Print Title</strong>, and optionally assign it to an <strong>Album</strong>.</li>
+      <li>Tap <strong>Add Song</strong>.</li>
+    </ol>
+    <div class="tip"><strong>Print Title</strong> is an optional alternative title used in set lists, PDF and text exports, and the Day Sheet — displayed in place of the Song Name. Useful when the stage name or published title differs from the internal library name. Songs with a print title show it in blue beneath the song name on the Song List screen.</div>
+    <p>Alternatively, tap the <strong>+ button</strong> within an expanded album to add a song directly to that album via a modal.</p>
+
+    <h3>Editing a Song <span class="badge badge-admin">Admin</span></h3>
+    <p>Tap the pencil icon next to a song to load it into the form for editing. Update the fields and tap <strong>Update Song</strong>.</p>
+
+    <h3>Reordering Songs &amp; Albums <span class="badge badge-admin">Admin</span></h3>
+    <p>Tap the <strong>Edit Order</strong> button (top-right of the song list) to enter reorder mode. In this mode:</p>
+    <ul>
+      <li>A <strong>≡ drag handle</strong> appears on the left of each album header — long-press and drag to rearrange albums.</li>
+      <li>A <strong>≡ drag handle</strong> also appears on each song row within an expanded album — long-press and drag to rearrange songs within that album.</li>
+    </ul>
+    <p>Your changes are saved automatically as you drag. Once an admin has set a custom album order, that order is used for <em>all</em> users. Song order within each album is also preserved for everyone. Tap <strong>Edit Order</strong> again to exit reorder mode.</p>
+    <div class="tip">If no custom album order has been set by an admin, albums are sorted newest-first by release year for all users.</div>
+
+    <h3>Managing Albums <span class="badge badge-admin">Admin</span></h3>
+    <p>Expand the <strong>Albums</strong> section at the bottom of the screen. Tap <strong>+ Add Album</strong> to create a new album with a name and optional year. Tap the pencil icon on an album to rename it or update the year. Deleting an album moves its songs to the Ungrouped section.</p>
+    <div class="tip"><span class="badge badge-tm">Tour Manager</span> can view the Song List and use it to build set lists on the Show screen, but cannot add, edit, or delete songs or albums. Song and album management is <strong>Admin only</strong>.</div>
+
+    <nav class="section-nav">
+      <a href="#calendar" class="nav-prev">Calendar</a>
+      <div class="nav-spacer"></div>
+      <a href="#crew" class="nav-next">Crew</a>
+    </nav>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ 11. CREW ═══ -->
+  <section class="section" id="crew">
+    <h2 class="section-title"><span class="section-icon">👥</span>Crew</h2>
+    <p>The <strong>Crew</strong> tab is a department-organised roster of everyone on the tour — band, production, crew, and any supporting staff. Roster entries can be linked to an app user (so contact details stay in sync automatically), pulled from the <strong>Contacts</strong> book, or entered as a freeform name for people who aren't in the system.</p>
+
+    <h3>Browsing the Roster</h3>
+    <p>Crew are organised into collapsible <strong>department groups</strong> (e.g. Band, Production, Lighting). Tap the chevron on a group header to expand it and see its members. Each member row shows their name, role, and a small account icon if they are linked to an app user. Tap a member to expand their card and see email and phone — tap either to call, message, or email directly.</p>
+
+    <h3>Groups <span class="badge badge-admin">Admin</span> <span class="badge badge-tm">Tour Manager</span></h3>
+    <p>Each group header shows the group name, member count, and action icons:</p>
+    <ul>
+      <li><strong>✏ Pencil</strong> — rename the group.</li>
+      <li><strong>＋</strong> — add a new member to the group.</li>
+      <li><strong>🗑 Trash</strong> — delete the group and all its members (<span class="badge badge-admin">Admin</span> only).</li>
+    </ul>
+    <p>Tap <strong>+</strong> in the screen header to create a new department group.</p>
+
+    <h3>Reordering Groups <span class="badge badge-admin">Admin</span> <span class="badge badge-tm">Tour Manager</span></h3>
+    <p>Tap <strong>Reorder</strong> in the screen header (visible when there are two or more groups) to enter group reorder mode. A <strong>≡ drag handle</strong> appears on each group — long-press and drag to reorder. Tap <strong>Done</strong> to save.</p>
+
+    <h3>Adding Members <span class="badge badge-admin">Admin</span> <span class="badge badge-tm">Tour Manager</span></h3>
+    <p>Tap <strong>+</strong> on a group header to open the Add Member sheet. Choose a source:</p>
+    <ul>
+      <li><strong>App User</strong> — search by name, job title, or email and select one or more users. Their contact details are linked automatically and stay up to date.</li>
+      <li><strong>Contact</strong> — search the Contacts book and select one or more contacts.</li>
+      <li><strong>Manual</strong> — type a name directly, for people who don't have an app account or contact entry.</li>
+    </ul>
+    <p>Set a <strong>Role</strong> for each member (their position on tour, e.g. FOH Engineer, Drums) and tap <strong>Save</strong>.</p>
+
+    <h3>Reordering Members Within a Group <span class="badge badge-admin">Admin</span> <span class="badge badge-tm">Tour Manager</span></h3>
+    <p>When a group is expanded and has more than one member, a <strong>Reorder</strong> button appears at the top-right of the member list. Tap it to enter member reorder mode — long-press a drag handle and drag to reorder. Tap <strong>Done</strong> to save.</p>
+
+    <h3>Editing, Moving &amp; Deleting Members <span class="badge badge-admin">Admin</span> <span class="badge badge-tm">Tour Manager</span></h3>
+    <p>Expand a member card to reveal the action icons:</p>
+    <ul>
+      <li><strong>✏ Pencil</strong> — edit the member's role or update their linked source.</li>
+      <li><strong>→ Arrow</strong> — move the member to a different department group.</li>
+      <li><strong>🗑 Trash</strong> — remove the member from the roster (confirmation required).</li>
+    </ul>
+
+    <h3>Exporting the Roster <span class="badge badge-admin">Admin</span> <span class="badge badge-tm">Tour Manager</span></h3>
+    <p>Tap the <strong>share icon</strong> in the screen header to open the export panel. Select which members to include (individual checkboxes, or tap a group header to select/deselect the whole department), then choose:</p>
+    <ul>
+      <li><strong>Export as PDF</strong> — formatted table (name, role, email, phone) with the organisation name as the document header. Opens in the in-app PDF viewer — pinch to zoom, tap <strong>Share</strong> to send via AirDrop, email, or any other share option.</li>
+      <li><strong>Export as CSV</strong> — generates a CSV file and opens the system share sheet.</li>
+    </ul>
+    <div class="tip">The <strong>Role</strong> column in exports shows the role set per crew entry — not the user's app role. A person can have a different crew role in different organisations.</div>
+
+    <h3>My Profile &amp; Crew Profiles</h3>
+    <p>Each app user has a personal profile with private details separate from the roster. Access your own profile via <strong>⋮ → My Details</strong> in the top-right menu. <span class="badge badge-admin">Admin</span> users can view and edit any user's full profile from the <strong>Admin</strong> screen. Profile fields include:</p>
+    <ul class="field-list">
+      <li><span class="field-name">First Name / Surname / Nickname</span><span class="field-desc">Display name and optional short name shown throughout the app.</span></li>
+      <li><span class="field-name">Phone</span><span class="field-desc">Mobile number including country code.</span></li>
+      <li><span class="field-name">Frequent Flyer 1 &amp; 2</span><span class="field-desc">Airline name and membership number (private).</span></li>
+      <li><span class="field-name">APRA / Union Number</span><span class="field-desc">Performing rights or union membership number (private).</span></li>
+      <li><span class="field-name">Seat Preference</span><span class="field-desc">Aisle or Window (private).</span></li>
+      <li><span class="field-name">Rental Car</span><span class="field-desc">Rental company and loyalty/membership number (private).</span></li>
+      <li><span class="field-name">T-Shirt Size</span><span class="field-desc">Merch sizing (private).</span></li>
+      <li><span class="field-name">Crew Notes</span><span class="field-desc">Internal notes visible to Admin and Tour Manager only.</span></li>
+      <li><span class="field-name">Home Address</span><span class="field-desc">Residential address with Google Places autocomplete (private).</span></li>
+    </ul>
+    <p>Profiles are grouped with colour-coded department dots. Use the <strong>All crew</strong> button to see a flat A–Z list of everyone. <span class="badge badge-admin">Admin</span> <span class="badge badge-tm">Tour Manager</span> can export the full list as PDF or CSV.</p>
+
+  </section>
+
+  <!-- ═══════════════════════════════════════════ 12. CONTACTS ═══ -->
+  <section class="section" id="contacts">
+    <h2 class="section-title"><span class="section-icon">📇</span>Contacts</h2>
+    <p>The global contacts book for the tour — promoters, agents, venue staff, and anyone else you deal with regularly. Contacts added here can be attached to specific show dates via the <a href="#show">Show Screen</a>.</p>
+
+    <h3>Layout</h3>
+    <p>Contacts are organised into <strong>custom groups</strong> — each displayed as a collapsible card with a coloured dot and member count. An <strong>Ungrouped</strong> section below the groups shows any contacts not yet assigned to a group. Tap the <strong>A–Z</strong> button in the top-right corner to switch to a flat alphabetical list of all contacts.</p>
+
+    <h3>Adding a Contact <span class="badge badge-admin">Admin</span> <span class="badge badge-tm">Tour Manager</span></h3>
+    <ol class="steps">
+      <li>Tap <strong>Add Contact</strong> at the bottom of the screen.</li>
+      <li>Fill in Role, First Name, Surname, Company, Email, and Phone in the modal sheet.</li>
+      <li>Tap <strong>Add</strong> to save.</li>
+    </ol>
+    <p>On iOS and Android, tap <strong>Import from Contacts</strong> to pull details directly from your device contacts book — the form opens pre-filled ready to review and save.</p>
+
+    <h3>Editing &amp; Deleting <span class="badge badge-admin">Admin</span> <span class="badge badge-tm">Tour Manager</span></h3>
+    <p>Tap a contact card to expand it, then tap the <strong>pencil icon</strong> to open the edit modal pre-filled with the contact's details. Make changes and tap <strong>Save</strong>.</p>
+    <p><span class="badge badge-admin">Admin</span> only: Tap the <strong>trash icon</strong> to delete a contact (confirmation required). The contact is also automatically removed from any groups it belonged to.</p>
+
+    <h3>Contact Groups <span class="badge badge-admin">Admin</span> <span class="badge badge-tm">Tour Manager</span></h3>
+    <p>Groups let you organise contacts by category — e.g. Promoters, Agents, Venues.</p>
+    <ul>
+      <li>Tap <strong>+</strong> next to the Groups heading to create a new group. Enter a name and choose one of the 8 colour swatches.</li>
+      <li>Tap the <strong>pencil icon</strong> on a group card to rename it or change its colour.</li>
+      <li>Tap <strong>Edit</strong> next to the Groups heading to enter reorder mode — a <strong>≡ drag handle</strong> appears on the left of each group card. Long-press the handle and drag to reorder. Tap <strong>Done</strong> to save.</li>
+      <li>Tap the <strong>person+ icon</strong> on a group card to open the member picker — tick the contacts you want in that group and tap <strong>Done</strong>.</li>
+      <li>Tap the <strong>arrow icon</strong> on an expanded contact card to move it to a different group.</li>
+      <li>Tap the <strong>trash icon</strong> on a group to delete it — contacts in the group are <em>not</em> deleted, they move to Ungrouped.</li>
+    </ul>
+
+    <nav class="section-nav">
+      <a href="#crew" class="nav-prev">Crew</a>
+      <div class="nav-spacer"></div>
+      <a href="#notifications" class="nav-next">Notifications</a>
+    </nav>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ 13. NOTIFICATIONS ═══ -->
+  <section class="section" id="notifications">
+    <h2 class="section-title"><span class="section-icon">🔔</span>Notifications</h2>
+    <p>The <strong>Notifications</strong> tab (bell icon) serves two purposes: an inbox for received messages, and a compose panel for sending messages to the team.</p>
+
+    <h3>Your Inbox</h3>
+    <p>All received notifications appear here. A badge on the tab icon shows how many unread messages you have.</p>
+    <ul>
+      <li>Tap <strong>All</strong>, <strong>Unread</strong>, or (Admin/TM only) <strong>Sent</strong> to filter the list. Unread messages are shown with a blue dot on the left.</li>
+      <li>Tap a notification to open the <strong>full message view</strong> &mdash; the complete title and body are displayed full-screen. The notification is automatically marked as read when opened.</li>
+      <li>Tap <strong>Mark all read</strong> to clear all unread dots at once.</li>
+      <li><span class="badge badge-admin">Admin</span> only: <strong>swipe left</strong> on a notification to reveal the red <strong>Delete</strong> button. Tap <strong>Clear all</strong> to delete all notifications at once (confirmation required).</li>
+    </ul>
+    <div class="tip"><strong>Undo a deletion:</strong> After deleting a notification a toast slides up from the bottom for 5 seconds. Tap <strong>Undo</strong> to restore it. On a physical device you can also <strong>shake the device</strong> within those 5 seconds to undo.</div>
+
+    <h3>Sending a Message <span class="badge badge-admin">Admin</span> <span class="badge badge-tm">Tour Manager</span></h3>
+    <p><span class="badge badge-admin">Admin</span> and <span class="badge badge-tm">Tour Manager</span> users can send push notifications to the team. Notifications are delivered instantly to the recipient's device and also appear in their in-app inbox.</p>
+    <ol class="steps">
+      <li>Choose your recipients:
+        <ul>
+          <li><strong>All</strong> — every user in the system</li>
+          <li><strong>Groups</strong> — select one or more role groups (Admins, Tour Managers, Artists, Crew) — the member count is shown on each chip</li>
+          <li><strong>Individual</strong> — search by name and tick specific people</li>
+        </ul>
+      </li>
+      <li>Enter a <strong>Title</strong> (max 100 characters) and a <strong>Message</strong> (max 1,000 characters). The character count is shown as you type.</li>
+      <li>Tap <strong>Send to N People</strong>.</li>
+    </ol>
+    <div class="note">Push notifications are delivered to physical devices only. They will not appear as device pop-ups in a browser or simulator, but they will still land in the recipient's in-app inbox.</div>
+
+    <h3>Reading &amp; Copying Messages</h3>
+    <p>Tap a notification to open the full message view. The title and body text are <strong>selectable</strong> — tap and hold to highlight and copy a portion of the text. Tap the <strong>copy icon</strong> button in the top-right of the message view to copy the entire message to your clipboard in one tap.</p>
+
+    <h3>Sent Messages <span class="badge badge-admin">Admin</span> <span class="badge badge-tm">Tour Manager</span></h3>
+    <p>Tap the <strong>Sent</strong> filter tab (visible to Admin and Tour Manager only) to see a history of all notifications sent from your account. Each entry shows the title, body, time sent, and who it was addressed to. <span class="badge badge-admin">Admin</span> users can delete individual sent records using the trash icon on the right of each entry.</p>
+
+    <nav class="section-nav">
+      <a href="#contacts" class="nav-prev">Contacts</a>
+      <div class="nav-spacer"></div>
+      <a href="#organisations" class="nav-next">Organisations</a>
+    </nav>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ 14. ORGANISATIONS ═══ -->
+  <section class="section" id="organisations">
+    <h2 class="section-title"><span class="section-icon">🏢</span>Organisations</h2>
+    <p>All tour data is scoped to an organisation. This makes it possible to manage multiple bands or projects without data overlapping.</p>
+
+    <h3>Switching Organisations</h3>
+    <p>Tap the <strong>Organisations</strong> item in the navigation. The list shows all organisations you belong to. The active one is highlighted with a blue border and checkmark. Tap any other organisation to switch to it — all screens will immediately reflect that organisation's data.</p>
+
+    <h3>Creating an Organisation <span class="badge badge-admin">Admin</span> <span class="badge badge-tm">Tour Manager</span></h3>
+    <ol class="steps">
+      <li>Tap <strong>+ Add Organisation</strong>.</li>
+      <li>Enter the organisation name (e.g. the band name).</li>
+      <li>Tap <strong>Create</strong>.</li>
+    </ol>
+
+    <nav class="section-nav">
+      <a href="#notifications" class="nav-prev">Notifications</a>
+      <div class="nav-spacer"></div>
+      <a href="#admin" class="nav-next">Admin</a>
+    </nav>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ 15. ADMIN ═══ -->
+  <section class="section" id="admin">
+    <h2 class="section-title"><span class="section-icon">⚙️</span>Admin — User Management</h2>
+    <p>The Admin screen is accessible to <span class="badge badge-admin">Admin</span> users only. Other roles see a locked screen. Access it via the navigation menu.</p>
+
+    <h3>Users Tab</h3>
+    <p>Displays all registered users sorted <strong>alphabetically by surname</strong> (A–Z). Each user card shows their name, email, role badge (colour-coded), and any groups they belong to (coloured pill badges). Tap any card to open the full <strong>Edit Profile</strong> sheet for that user.</p>
+
+    <h4>Editing a User's Profile</h4>
+    <p>Tapping a user card opens a full-screen profile editor. Fields available to admins:</p>
+    <ul class="field-list">
+      <li><span class="field-name">First Name / Surname</span><span class="field-desc">Updates the user's display name throughout the app.</span></li>
+      <li><span class="field-name">Nickname</span><span class="field-desc">Optional short name shown on crew cards.</span></li>
+      <li><span class="field-name">Phone</span><span class="field-desc">Mobile number including country code.</span></li>
+      <li><span class="field-name">Frequent Flyer 1 &amp; 2</span><span class="field-desc">Airline name and membership number (private).</span></li>
+      <li><span class="field-name">APRA / Union Number</span><span class="field-desc">Performing rights or union membership number (private).</span></li>
+      <li><span class="field-name">Seat Preference</span><span class="field-desc">Aisle or Window (private).</span></li>
+      <li><span class="field-name">Rental Car</span><span class="field-desc">Rental company and loyalty/membership number (private).</span></li>
+      <li><span class="field-name">T-Shirt Size</span><span class="field-desc">Merch sizing (private).</span></li>
+      <li><span class="field-name">Home Address</span><span class="field-desc">Residential address (private).</span></li>
+      <li><span class="field-name">Crew Notes</span><span class="field-desc">Internal notes visible to Admin and Tour Manager only.</span></li>
+    </ul>
+    <p>Tap <strong>Save</strong> to confirm changes. The user's display name is updated in Firestore immediately.</p>
+    <div class="note">Role (job title on tour) is managed per crew entry in the <a href="#crew">Crew tab</a>, not on the user profile — a person may have a different role in different organisations.</div>
+
+    <h4>Changing a User's App Role</h4>
+    <p>Inside the Edit Profile sheet, tap <strong>Change Role</strong> to open the role picker. Select the new role from the four options — each has a colour badge and a description. The change takes effect immediately.</p>
+    <div class="warning">You cannot remove the last Admin. There must always be at least one Admin account in the system.</div>
+
+    <h3>Groups Tab</h3>
+    <p>Groups let you control visibility of show dates for subsets of users. A date can be set to visible to <em>Specific Groups</em>, and only users in those groups will see it.</p>
+
+    <h4>Creating a Group</h4>
+    <ol class="steps">
+      <li>Tap the <strong>+</strong> button in the Groups header.</li>
+      <li>Enter a group name, optional description, and choose a colour.</li>
+      <li>Tap <strong>Create</strong>.</li>
+    </ol>
+
+    <h4>Reordering Groups</h4>
+    <p>Tap <strong>Edit</strong> in the Groups header to enter reorder mode. A <strong>≡ drag handle</strong> appears on the left of each group card. Long-press the handle and drag the card to its new position. Tap <strong>Done</strong> to save the new order.</p>
+
+    <h4>Managing Group Members</h4>
+    <ol class="steps">
+      <li>Tap the <strong>person+badge icon</strong> on a group card.</li>
+      <li>A full-screen sheet opens showing all users. Tap a user to toggle their membership — a checkmark indicates they are in the group.</li>
+      <li>Tap <strong>Done</strong> in the top-right corner when finished. Changes are saved immediately.</li>
+    </ol>
+
+    <h4>Editing &amp; Deleting Groups</h4>
+    <p>Tap the <strong>pencil icon</strong> to rename a group or change its colour/description. Tap the <strong>trash icon</strong> to delete a group.</p>
+
+    <nav class="section-nav">
+      <a href="#organisations" class="nav-prev">Organisations</a>
+      <div class="nav-spacer"></div>
+      <a href="#settings" class="nav-next">Settings</a>
+    </nav>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ 16. SETTINGS ═══ -->
+  <section class="section" id="settings">
+    <h2 class="section-title"><span class="section-icon">⚙️</span>Settings</h2>
+    <p>The <strong>Settings</strong> screen is accessed via <strong>⚙️ Settings</strong> in the ⋮ top-right menu. It consolidates personalisation and admin options in one place.</p>
+
+    <h3>Account</h3>
+    <ul>
+      <li><strong>Organisations</strong> — view and switch between organisations. Tap the back chevron to return to Settings.</li>
+      <li><strong>Manage Users</strong> <span class="badge badge-admin">Admin</span> — invite, edit roles, and remove users from the organisation.</li>
+    </ul>
+
+    <h3>Appearance</h3>
+    <ul>
+      <li><strong>Band logo</strong> <span class="badge badge-admin">Admin</span> — upload your band or company logo to replace the default World Tour Pro icon in the header. Tap the row to choose from your <strong>Photo Library</strong> or <strong>Files</strong>. The logo is stored in the cloud and appears for all users in the organisation. Tap the ✕ button to remove it and revert to the default icon.</li>
+      <li><strong>Use organisation name as title</strong> <span class="badge badge-admin">Admin</span> — when enabled, the organisation name replaces "World Tour Pro" as the main wordmark in the app header. The setting is stored per organisation and syncs across all devices automatically.</li>
+      <li><strong>Theme</strong> — toggle between <strong>☀️ Light</strong> and <strong>🌙 Dark</strong> mode using the segment control in the Appearance section. The app defaults to <strong>Dark</strong> mode on first install. Your preference is saved locally on your device and persists between sessions — each user can set their own preference independently.</li>
+    </ul>
+
+    <h3>Time</h3>
+    <ul>
+      <li><strong>Time Format</strong> — choose <strong>12 hr</strong> (e.g. 5:00 PM) or <strong>24 hr</strong> (e.g. 17:00). Affects all time displays throughout the app — schedule timelines, transport entries, and venue local time. Your preference is saved between sessions.</li>
+    </ul>
+
+    <h3>Finance <span class="badge badge-admin">Admin</span></h3>
+    <ul>
+      <li><strong>Default Currency</strong> — sets the default currency pre-selected when a new flight cost, room cost, or backline cost entry is created. Tap the currency button to open the full-screen currency picker. The default applies across all new entries in the organisation. Individual entries can still be changed to a different currency after creation.</li>
+      <li><strong>Finance Visibility</strong> — controls who can see finance data across the app:
+        <ul>
+          <li><strong>Admin + Tour Manager</strong> (default) — both Admins and Tour Managers can access the Finance screen and see cost fields on Transport, Hotel, and Backline screens.</li>
+          <li><strong>Admin Only</strong> — only Admins can access finance data. Tour Managers will not see the Finance menu option, and the Flight Cost, Room Costs, and Backline Cost fields will be hidden from them entirely.</li>
+        </ul>
+      </li>
+    </ul>
+    <div class="note">Finance settings are stored per organisation and sync across all devices in real time.</div>
+
+    <nav class="section-nav">
+      <a href="#admin" class="nav-prev">Admin</a>
+      <div class="nav-spacer"></div>
+      <a href="#tasks" class="nav-next">Tasks</a>
+    </nav>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ 17. TASKS ═══ -->
+  <section class="section" id="tasks">
+    <h2 class="section-title"><span class="section-icon">✅</span>Tasks <span class="badge badge-admin">Admin</span></h2>
+    <p>The <strong>Tasks</strong> page gives admins a shared to-do list for the organisation. Access it via <strong>✅ Tasks</strong> in the ⋮ top-right menu.</p>
+
+    <h3>Adding a Task</h3>
+    <p>Type in the text field at the bottom of the screen and tap the blue <strong>+</strong> button (or press the keyboard return key) to add a task. It will appear immediately at the bottom of the list and sync to all admin users in real time.</p>
+
+    <h3>Completing a Task</h3>
+    <p>Tap the circular checkbox on the left of any task to mark it as complete. The checkbox turns green with a checkmark, the title gets a strikethrough, and the card moves to the <strong>Completed</strong> section below a divider. Tap the checkbox again to revert it to incomplete.</p>
+
+    <h3>Deleting a Task</h3>
+    <p>Tap the <strong>trash icon</strong> on the right of a task card. A confirmation prompt appears before the task is deleted.</p>
+
+    <div class="note">Tasks are shared across all Admin users in the organisation and sync in real time via the cloud.</div>
+
+  </section>
+
+</div>
+
+<footer style="text-align:center;padding:32px 16px 24px;font-size:13px;color:#888;">
+  &copy; 2026 World Tour Pro
+</footer>
+
+</body>
+</html>
